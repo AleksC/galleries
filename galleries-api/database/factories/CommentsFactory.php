@@ -15,7 +15,6 @@ use Faker\Generator as Faker;
 
 $factory->define(App\Comment::class, function (Faker $faker) {
     return [
-        'name' => $faker->name,
         'body' => $faker->text($maxNbChars = 100),
         'user_id' => $faker->numberBetween($min = 1, $max = 10),
         'gallery_id' => $faker->numberBetween($min = 1, $max = 20)
