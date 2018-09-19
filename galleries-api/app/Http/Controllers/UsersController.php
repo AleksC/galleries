@@ -34,7 +34,19 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'email' => 'required|email',
+            'password' => 'confirmed|min:8|regex:/^(?=.*\d).+$/',
+            'terms_and_conditions' => 'accepted'
+        ]);
+
+        $emailMatch = User::where('email', $validatedData['email'])->first();
+
+        if($validatedData && !$emailMatch) {
+            return User::create($request->all());
+        }
     }
 
     /**
