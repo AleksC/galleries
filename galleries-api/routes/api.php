@@ -30,3 +30,7 @@ Route::group([
     Route::post('me', 'AuthController@me');
 
 });
+
+Route::post('register', 'UsersController@store');
+
+Route::get('galleries', 'GalleriesController@index');
