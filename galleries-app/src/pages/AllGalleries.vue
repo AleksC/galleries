@@ -1,17 +1,16 @@
 <template>
     <div>
         <ul class="list-group">
-            <li class="list-group-item">
+            <li class="list-group-item" v-for="(gallery, key) in galleries"
+                    :key="key">
                 <!-- <router-link
                     class="list-group-item list-group-item-action"
                     tag="button"
-                    :to="{ name: `galleries/${gallery.id}`, params: { id: contact.id }}"
+                    :to="{ name: `/galleries/${gallery.id}`, params: { id: gallery.id }}"
                     exact-active-class="active"
-                    v-for="(contact, key) in contacts"
-                    :key="key"
                     >
-                    {{ contact.first_name }} {{ contact.last_name }}
-                </router-link> -->
+                    {{ gallery.name }}
+                </router-link> -->{{ gallery.name }}
             </li>
         </ul>
     </div>

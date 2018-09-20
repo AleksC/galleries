@@ -8,10 +8,10 @@
                 <router-link class="nav-link" to='/login' v-if="!isAuthenticated">Login</router-link>
             </li>
             <li class="nav-item active">
-                <router-link class="nav-link" to='/register'>Register</router-link>
+                <router-link class="nav-link" to='/register' v-if="!isAuthenticated">Register</router-link>
             </li>
             <li class="nav-item active">
-                <a href="#" class="nav-item nav-link" @click="logout" v-if="isAuthenticated">Logout</a>
+                <a href="#" class="nav-item nav-link" @click="logout">Logout</a>
             </li>
         </ul>
     </nav>
@@ -21,14 +21,15 @@ import { authService } from "../services/AuthService";
 
 export default {
   props: {
-    isAuthenticated: Boolean
+    isAuthenticated: authService.isAuthenticated()
   },
 
   methods: {
     logout() {
       authService.logout();
       this.$emit("userAuthenticated", false);
-      //   this.$router.push("login");
+      localStorage.removeItem("token");
+      this.$router.push("login");
     }
   }
 };

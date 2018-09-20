@@ -2,10 +2,10 @@ import axios from 'axios'
 
 export default class RegisterService {
     constructor() {
-        axios.defaults.baseURL = 'http://localhost:8000/';
+        axios.defaults.baseURL = 'http://localhost:8000/api';
     }
 
-    store(user) {
+    add(user) {
         return axios.post('register', user);
     }
 

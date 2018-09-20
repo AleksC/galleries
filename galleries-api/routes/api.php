@@ -34,3 +34,4 @@ Route::group([
 Route::post('register', 'UsersController@store');
 
 Route::get('galleries', 'GalleriesController@index');
+Route::get('galleries/:id', 'GalleriesController@show');
