@@ -1,5 +1,5 @@
 import axios from 'axios'
-export default class GalleryService {
+export default class ImageService {
     constructor() {
         axios.defaults.baseURL = 'http://localhost:8000/api';
         axios.defaults.headers.common = {
@@ -8,15 +8,11 @@ export default class GalleryService {
             'Access-Control-Allow-Origin': '*'
             };
     }
-
-    getAll() {
-        return axios.get('galleries')
-    }
-
+    
     get(id) {
-        return axios.get(`/galleries/${id}`);
+        return axios.get(`/images/${id}`);
     }
 
 }
 
-export const galleryService = new GalleryService();
+export const imageService = new ImageService();
